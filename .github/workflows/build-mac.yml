@@ -1,0 +1,102 @@
+name: Build macOS VST3 + DMG
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-mac:
+    runs-on: macos-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      # JUCE un niveau au-dessus du repo (meme principe que Sixpack). Version
+      # figee sur 9.0.2 : c'est celle du build Windows de Suppressor.
+      - name: Récupérer JUCE 9.0.2
+        run: |
+          cd ..
+          git clone --depth 1 --branch 9.0.2 https://github.com/juce-framework/JUCE.git
+
+      - name: Compiler Projucer
+        run: |
+          cd ../JUCE
+          xcodebuild -project extras/Projucer/Builds/MacOSX/Projucer.xcodeproj -configuration Release
+
+      # Le .jucer versionne contient le chemin Windows du dev (D:/JUCE 9.0.2/...).
+      # Sur le runner, JUCE est un niveau au-dessus du repo -> on repointe les
+      # chemins de modules (relatifs au dossier du .jucer) avant de generer.
+      - name: Repointer les chemins de modules du .jucer
+        run: |
+          sed -i '' 's#D:/JUCE 9.0.2/JUCE/modules#../JUCE/modules#g' Suppressor.jucer
+          grep -c '../JUCE/modules' Suppressor.jucer
+
+      - name: Définir le chemin global JUCE (filet de securite Projucer CLI)
+        run: |
+          PROJUCER="../JUCE/extras/Projucer/Builds/MacOSX/build/Release/Projucer.app/Contents/MacOS/Projucer"
+          "$PROJUCER" --set-global-search-path osx defaultJuceModulePath "$(cd ../JUCE/modules && pwd)"
+
+      - name: Générer le projet Xcode depuis Suppressor.jucer
+        run: |
+          ../JUCE/extras/Projucer/Builds/MacOSX/build/Release/Projucer.app/Contents/MacOS/Projucer --resave "Suppressor.jucer"
+
+      # Binaire universel (Intel + Apple Silicon) : le DMG est distribue tel quel.
+      - name: Compiler le plugin (VST3)
+        run: |
+          xcodebuild -project "Builds/MacOSX/Suppressor.xcodeproj" \
+            -target "Suppressor - VST3" -configuration Release \
+            ARCHS="arm64 x86_64" ONLY_ACTIVE_ARCH=NO
+
+      - name: Vérifier les architectures du binaire
+        run: |
+          lipo -info "Builds/MacOSX/build/Release/Suppressor.vst3/Contents/MacOS/Suppressor"
+
+      - name: Uploader le VST3
+        uses: actions/upload-artifact@v4
+        with:
+          name: Suppressor-macOS-VST3
+          path: "Builds/MacOSX/build/Release/Suppressor.vst3"
+
+  build-dmg:
+    needs: build-mac
+    runs-on: macos-latest
+
+    steps:
+      - name: Récupérer le code (Readme, EULA, version)
+        uses: actions/checkout@v4
+
+      - name: Télécharger le VST3
+        uses: actions/download-artifact@v4
+        with:
+          name: Suppressor-macOS-VST3
+          path: staging/Suppressor.vst3
+
+      - name: Assembler le DMG
+        run: |
+          set -e
+
+          # Version lue dans le .jucer (attribut version= de <JUCERPROJECT>) :
+          # un seul endroit a mettre a jour a chaque livraison.
+          VERSION=$(tr '\n' ' ' < Suppressor.jucer | grep -o '<JUCERPROJECT[^>]*>' | grep -o ' version="[^"]*"' | cut -d'"' -f2)
+          echo "Version : $VERSION"
+          test -n "$VERSION"
+
+          cp Readme-osx.txt "staging/Readme.txt"
+          cp SideKey_EULA.txt "staging/EULA.txt"
+
+          # Raccourci glisser-déposer vers le dossier de plugins VST3 standard
+          ln -s /Library/Audio/Plug-Ins/VST3 "staging/VST3 (drag plugin here)"
+
+          hdiutil create -volname "Suppressor $VERSION" \
+            -srcfolder staging -ov -format UDZO \
+            "Suppressor-$VERSION.dmg"
+
+          echo "DMG_NAME=Suppressor-$VERSION-DMG" >> "$GITHUB_ENV"
+
+      - name: Uploader le DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.DMG_NAME }}
+          path: "Suppressor-*.dmg"

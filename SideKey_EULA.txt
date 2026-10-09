@@ -1,0 +1,126 @@
+Side Key System
+
+End User License Agreement (EULA), Disclaimer & Privacy Notice
+
+Copyright (C) 2026 Side Key System. All Rights Reserved.
+
+Please read this Agreement carefully before installing or using this software.
+
+By installing, copying, or using this software, you acknowledge that you have read, understood, and agree to the terms of this Agreement.
+
+--------------------------------------------------------------------------------
+
+1. License
+
+Side Key System grants you a limited, non-exclusive, non-transferable, and revocable license to install and use this software for personal and commercial audio production.
+
+This license does not transfer ownership of the software or any intellectual property rights.
+
+--------------------------------------------------------------------------------
+
+2. Ownership
+
+This software, including but not limited to its source code, algorithms, graphics, user interface, audio content, documentation, trademarks, logos, and all associated materials, is the exclusive property of Side Key System and is protected by copyright and applicable intellectual property laws.
+
+--------------------------------------------------------------------------------
+
+3. Restrictions
+
+You may not:
+
+- Reverse engineer, decompile, or disassemble the software except where permitted by applicable law.
+- Modify, adapt, or create derivative works.
+- Redistribute, sublicense, rent, lease, or sell the software without prior written permission from Side Key System.
+- Remove or alter copyright notices, trademarks, or branding.
+- Circumvent any licensing or copy-protection mechanisms.
+
+--------------------------------------------------------------------------------
+
+4. Software Updates
+
+Side Key System may provide updates, bug fixes, improvements, or new features at its sole discretion.
+
+Updates may change or remove existing functionality without prior notice.
+
+--------------------------------------------------------------------------------
+
+5. Disclaimer of Warranty
+
+THIS SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTIES OF ANY KIND.
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, SIDE KEY SYSTEM DISCLAIMS ALL EXPRESS OR IMPLIED WARRANTIES, INCLUDING BUT NOT LIMITED TO:
+
+- MERCHANTABILITY
+- FITNESS FOR A PARTICULAR PURPOSE
+- NON-INFRINGEMENT
+- CONTINUOUS OR ERROR-FREE OPERATION
+- COMPATIBILITY WITH EVERY HARDWARE, OPERATING SYSTEM, HOST APPLICATION, OR SOFTWARE CONFIGURATION
+
+YOU ASSUME ALL RISKS ASSOCIATED WITH THE INSTALLATION AND USE OF THIS SOFTWARE.
+
+--------------------------------------------------------------------------------
+
+6. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, SIDE KEY SYSTEM, ITS DEVELOPERS, CONTRIBUTORS, OR AFFILIATES SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES, INCLUDING BUT NOT LIMITED TO:
+
+- LOSS OF DATA
+- LOSS OF AUDIO PROJECTS
+- LOSS OF PROFITS
+- BUSINESS INTERRUPTION
+- HARDWARE OR SOFTWARE DAMAGE
+- SYSTEM INSTABILITY
+- CORRUPTED SESSIONS
+- LOST PRODUCTIVITY
+
+REGARDLESS OF THE LEGAL THEORY UNDER WHICH SUCH DAMAGES ARE CLAIMED.
+
+THE USER IS SOLELY RESPONSIBLE FOR MAINTAINING ADEQUATE BACKUPS OF PROJECTS, PRESETS, AND IMPORTANT DATA.
+
+--------------------------------------------------------------------------------
+
+7. Privacy
+
+Unless explicitly stated, this software does not intentionally collect, transmit, or sell personal information.
+
+If optional online services are enabled (such as license activation, update checking, crash reporting, or anonymous diagnostics), only the minimum technical information necessary to provide those services may be transmitted.
+
+No audio files, DAW projects, presets, or creative content are collected without your explicit consent.
+
+--------------------------------------------------------------------------------
+
+8. Third-Party Components
+
+This software may include or rely on third-party libraries or technologies.
+
+All third-party trademarks remain the property of their respective owners.
+
+Applicable third-party licenses are provided where required.
+
+--------------------------------------------------------------------------------
+
+9. Termination
+
+Failure to comply with this Agreement automatically terminates your license to use this software.
+
+Upon termination, you must cease all use of the software and remove all installed copies from your devices.
+
+--------------------------------------------------------------------------------
+
+10. Governing Law
+
+This Agreement shall be governed by the applicable laws of the jurisdiction in which Side Key System is established.
+
+--------------------------------------------------------------------------------
+
+11. Acceptance
+
+By clicking "I Agree", installing, or using this software, you confirm that you have read, understood, and accepted all terms of this Agreement.
+
+If you do not agree with these terms, do not install or use this software.
+
+--------------------------------------------------------------------------------
+
+Side Key System
+Professional Audio Software
+(C) 2026 Side Key System. All Rights Reserved.
